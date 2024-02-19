@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Navbar() {
     return (
-        <div className="flex items-center justify-between bg-slate-800 text-slate-50">
+        <div className="flex items-center justify-between bg-zinc-700 text-slate-50 h-16 px-8 py-4">
             <button>
                 <AlignJustify />
             </button>
