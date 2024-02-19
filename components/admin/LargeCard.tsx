@@ -3,7 +3,7 @@ import React from "react";
 
 export default function LargeCard({ className }: { className: string }) {
     return (
-        <div className={`rounded-lg text-white ${className}`}>
+        <div className={`rounded-lg text-white shadow-md p-8 flex items-center flex-col gap-2 ${className}`}>
             <Layers />
             <h4>
                 Today&apos;s Orders
