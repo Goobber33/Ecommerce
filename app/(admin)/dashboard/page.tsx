@@ -1,3 +1,4 @@
+import DashboardCharts from "@/components/admin/DashboardCharts";
 import Heading from "@/components/admin/Heading";
 import LargeCards from "@/components/admin/LargeCards";
 import SmallCards from "@/components/admin/SmallCards";
@@ -9,6 +10,7 @@ export default function Dashboard() {
       <Heading title={"Dashboard Overview"} />
       <LargeCards />
       <SmallCards />
+      <DashboardCharts />
     </div>
   );
 }
