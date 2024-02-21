@@ -1,5 +1,6 @@
 import Heading from "@/components/admin/Heading";
 import LargeCards from "@/components/admin/LargeCards";
+import SmallCards from "@/components/admin/SmallCards";
 import React from "react";
 
 export default function Dashboard() {
@@ -7,6 +8,7 @@ export default function Dashboard() {
     <div>
       <Heading title={"Dashboard Overview"} />
       <LargeCards />
+      <SmallCards />
     </div>
   );
 }

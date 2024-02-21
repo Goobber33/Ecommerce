@@ -1,15 +1,15 @@
 import { Layers } from "lucide-react";
 import React from "react";
 
-export default function LargeCard({ className }: { className: string }) {
+export default function LargeCard({ data }: { data: any }) {
     return (
-        <div className={`rounded-lg text-white shadow-md p-8 flex items-center flex-col gap-2 ${className}`}>
+        <div className={`rounded-lg text-white shadow-md p-8 flex items-center flex-col gap-2 ${data.color}`}>
             <Layers />
             <h4>
-                Today&apos;s Orders
+                {data.title}
             </h4>
-            <h2 className="text-3xl">
-                UGX.108.12k
+            <h2 className="lg:text-3xl text-2xl">
+                ${data.sales}
             </h2>
         </div>
     )
