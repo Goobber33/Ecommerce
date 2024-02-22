@@ -13,21 +13,21 @@ import {
     Legend,
 } from 'chart.js';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  );
-
 import { faker } from '@faker-js/faker';
 
 import { Line } from "react-chartjs-2";
 
 export default function WeeklySalesChart() {
+
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        PointElement,
+        LineElement,
+        Title,
+        Tooltip,
+        Legend
+      );
 
     const options = {
         responsive: true,
@@ -37,7 +37,7 @@ export default function WeeklySalesChart() {
 
             },
             title: {
-                display: true,
+                display: false,
                 text: 'Chart.js Line Chart',
             },
         },
@@ -49,29 +49,47 @@ export default function WeeklySalesChart() {
         labels,
         datasets: [
             {
-                label: 'Dataset 1',
+                label: 'Sales',
                 data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
                 borderColor: 'rgb(255, 99, 132)',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
-            {
-                label: 'Dataset 2',
-                data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-                borderColor: 'rgb(53, 162, 235)',
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            },
+            
         ],
     };
 
     const tabs = [
         {
             title: 'Sales',
-            type: 'sales'
+            type: 'sales',
+            data: {
+                labels,
+                datasets: [
+                    {
+                        label: 'Sales',
+                        data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    },
+                    
+                ],
+            },
         },
         {
             title: 'Orders',
-
-            type: 'orders'
+            type: 'orders',
+            data: {
+                labels,
+                datasets: [
+                    {
+                        label: 'Orders',
+                        data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
+                        borderColor: 'rgb(0, 137, 132)',
+                        backgroundColor: 'rgb(0, 137, 132, 0.5)',
+                    },
+                    
+                ],
+            },
         },
     ]
 
@@ -102,7 +120,7 @@ export default function WeeklySalesChart() {
 
                 {tabs.map((tab, i) => {
                     if (chartToDisplay === tab.type) {
-                        return <Line key={i} options={{ ...options, plugins: { ...options.plugins, legend: { ...options.plugins.legend, position: 'top' } } }} data={data} />;
+                        return <Line key={i} options={{ ...options, plugins: { ...options.plugins, legend: { ...options.plugins.legend, position: 'top' } } }} data={tab.data} />;
                     }
                     return null;
                 })}
