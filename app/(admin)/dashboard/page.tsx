@@ -1,3 +1,4 @@
+import CustomDataTable from "@/components/admin/CustomDataTable";
 import DashboardCharts from "@/components/admin/DashboardCharts";
 import Heading from "@/components/admin/Heading";
 import LargeCards from "@/components/admin/LargeCards";
@@ -11,6 +12,7 @@ export default function Dashboard() {
       <LargeCards />
       <SmallCards />
       <DashboardCharts />
+      <CustomDataTable />
     </div>
   );
 }
