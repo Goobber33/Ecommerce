@@ -8,33 +8,35 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function BestSellingProductsChart() {
 
-    const data = {
-        labels: ['Cabbage', 'Watermelon', 'Brocolli', 'Maize'],
-        datasets: [
-          {
-            label: '# of Votes',
-            data: [50, 10,20, 20,],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1,
-          },
+  const data = {
+    labels: ['Cabbage', 'Watermelon', 'Brocolli', 'Corn'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [50, 10, 20, 20,],
+        backgroundColor: [
+          'rgba(0, 0, 255, 0.7)',
+          'rgba(255, 0, 221, 0.7)',
+          'rgba(2, 139, 71, 0.7)',
+          'rgba(251,236,93)',
         ],
-      };
+        borderColor: [
+          'rgba(255, 255, 255, 255)',
+          'rgba(255, 255, 255, 255)',
+          'rgba(255, 255, 255, 255)',
+          'rgba(255, 255, 255, 255)',
+        ],
+        borderWidth: 2,
+      },
+    ],
+  };
 
-    return (
-        <div className="bg-slate-700 p-8 rounded-lg">
-            <h2 className="text-xl font-bold mb-4">Best Selling Products</h2>
-            <Pie data={data} />
-        </div>
-    )
+  return (
+    <div className="bg-slate-700 p-8 rounded-lg">
+      <h2 className="text-xl font-bold mb-4">Best Selling Products</h2>
+      <div className="p-8">
+        <Pie data={data} />
+      </div>
+    </div>
+  )
 }

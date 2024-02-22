@@ -3,14 +3,8 @@
 @tailwind utilities;
 
 
-
 body {
   min-height: 100vh;
+  background-color: rgba(0, 0, 255, 0.7);
 
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
