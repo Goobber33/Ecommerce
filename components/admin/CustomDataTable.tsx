@@ -1,11 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import data from "@/data.json";
 
 export default function CustomDataTable() {
+  const arr = [1, 2, 3, 4, 5];
   const PAGE_SIZE = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = startIndex + PAGE_SIZE;
+  const currentlyDisplayedData = data.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(data.length / PAGE_SIZE);
   console.log(data);
+
+  const itemStartIndex = startIndex + 1;
+  const itemEndIndex = startIndex + PAGE_SIZE;
 
   return (
     <div className="">
@@ -28,16 +37,19 @@ export default function CustomDataTable() {
                 </div>
               </th>
               <th scope="col" className="px-6 py-3">
-                First
+                Id
               </th>
               <th scope="col" className="px-6 py-3">
-                Last
+                First Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Category
+                Last Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Price
+                Email
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Gender
               </th>
               <th scope="col" className="px-6 py-3">
                 Action
@@ -45,7 +57,7 @@ export default function CustomDataTable() {
             </tr>
           </thead>
           <tbody>
-            {data.slice(0, 10).map((item, i) => {
+            {currentlyDisplayedData.map((item, i) => {
               return (
                 <tr
                   key={i}
@@ -66,6 +78,12 @@ export default function CustomDataTable() {
                       </label>
                     </div>
                   </td>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {item.id}
+                  </th>
                   <th
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -95,7 +113,7 @@ export default function CustomDataTable() {
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
             Showing{" "}
             <span className="font-semibold text-gray-50 dark:text-white">
-              1-10
+              {itemStartIndex} - {itemEndIndex}
             </span>{" "}
             of{" "}
             <span className="font-semibold text-gray-900 dark:text-white">
@@ -104,12 +122,13 @@ export default function CustomDataTable() {
           </span>
           <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
             <li>
-              <a
-                href="#"
+              <button
                 className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage == 1}
               >
                 Previous
-              </a>
+              </button>
             </li>
             <li>
               <a
@@ -153,12 +172,13 @@ export default function CustomDataTable() {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <button
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={currentPage == totalPages}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
