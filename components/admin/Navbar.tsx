@@ -1,4 +1,5 @@
 import { AlignJustify, Bell, Sun, User } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 export default function Navbar() {
@@ -22,7 +23,13 @@ export default function Navbar() {
           </div>
         </button>
         <button>
-          <User className="text-green-600" />
+          <Image
+            src="/profile.jpeg"
+            alt="User Profile"
+            width={200}
+            height={200}
+            className="w-8 h-8 rounded-full"
+          />
         </button>
       </div>
     </div>
